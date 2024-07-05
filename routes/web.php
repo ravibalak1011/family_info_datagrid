@@ -13,6 +13,9 @@ Route::prefix('families')->group(function () {
     Route::post('/store', [FamilyController::class, 'store'])->name('families.store');
     Route::get('/{family}', [FamilyController::class, 'show'])->name('families.show');
     Route::delete('/{family}', [FamilyController::class, 'destroy'])->name('families.destroy');
+
+    Route::get('families/{family}/edit', [FamilyController::class, 'edit'])->name('families.edit');
+    Route::put('families/{family}', [FamilyController::class, 'update'])->name('families.update');
     
 });
 

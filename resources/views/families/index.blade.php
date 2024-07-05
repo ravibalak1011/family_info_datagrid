@@ -15,6 +15,7 @@
                 <th>Address</th>
                 <th>Marital Status</th>
                 <th>Members Count</th>
+                <th>Photo</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -31,7 +32,14 @@
                     <td>{{ $family->marital_status }}</td>
                     <td><a href="{{ route('families.show', $family->id) }}">{{ $family->members_count }} members</a></td>
                     <td>
-                        
+                        @if ($family->photo)
+                            <img src="{{ Storage::url($family->photo) }}" alt="Photo" width="50">
+                        @else
+                            N/A
+                        @endif
+                    </td>
+                    <td>
+                        <a href="{{ route('families.edit', $family->id) }}" class="btn btn-primary btn-sm">Edit</a>
                         
                         <form action="{{ route('families.destroy', $family->id) }}" method="POST" style="display:inline-block;">
                             @csrf
