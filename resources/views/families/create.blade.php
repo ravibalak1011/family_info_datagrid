@@ -2,7 +2,7 @@
 
 @section('family_content')
     <h1>Create New Family</h1>
-    <form id="familyForm" action="{{ route('families.store') }}" method="POST">
+    <form id="familyForm" action="{{ route('families.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
         <div class="form-row">
@@ -120,6 +120,14 @@
             <button type="button" class="btn btn-sm btn-primary mt-2" onclick="addHobby()">Add Hobby</button>
         </div>
         <div id="hobbiesContainer"></div>
+
+        <div class="form-group">
+            <label for="photo">Photo:</label>
+            <input type="file" class="form-control-file" id="photo" name="photo">
+            @error('photo')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
+        </div>
 
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
