@@ -6,128 +6,129 @@
         @csrf
         @method('PUT')
 
-        <div class="form-group">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" class="form-control" value="{{ old('name', $family->name) }}" required>
-            @error('name')
-                <div class="text-danger">{{ $message }}</div>
-            @enderror
-            <div class="invalid-feedback">Please enter a name.</div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" class="form-control" value="{{ old('name', $family->name) }}" required>
+                @error('name')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
+            </div>
+            <div class="form-group col-md-6">
+                <label for="surname">Surname:</label>
+                <input type="text" id="surname" name="surname" class="form-control" value="{{ old('surname', $family->surname) }}" required>
+                @error('surname')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
+            </div>
         </div>
 
-        <div class="form-group">
-            <label for="surname">Surname:</label>
-            <input type="text" id="surname" name="surname" class="form-control" value="{{ old('surname', $family->surname) }}" required>
-            @error('surname')
-                <div class="text-danger">{{ $message }}</div>
-            @enderror
-            <div class="invalid-feedback">Please enter a surname.</div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="birthdate">Birthdate:</label>
+                <input type="date" id="birthdate" name="birthdate" class="form-control" value="{{ old('birthdate', $family->birthdate) }}" required>
+                @error('birthdate')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
+            </div>
+            <div class="form-group col-md-6">
+                <label for="mobile_no">Mobile No:</label>
+                <input type="text" id="mobile_no" name="mobile_no" class="form-control" value="{{ old('mobile_no', $family->mobile_no) }}" required>
+                @error('mobile_no')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
+            </div>
         </div>
 
-        <div class="form-group">
-            <label for="birthdate">Birthdate:</label>
-            <input type="date" id="birthdate" name="birthdate" class="form-control" value="{{ old('birthdate', $family->birthdate) }}" required>
-            @error('birthdate')
-                <div class="text-danger">{{ $message }}</div>
-            @enderror
-            <div class="invalid-feedback">Please enter a valid birthdate.</div>
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <label for="address">Address:</label>
+                <textarea class="form-control" id="address" name="address" rows="3" required>{{ old('address', $family->address) }}</textarea>
+                {{-- <input type="text" id="address" name="address" class="form-control" value="{{ old('address', $family->address) }}" required> --}}
+                @error('address')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
+            </div>
         </div>
 
-        <div class="form-group">
-            <label for="mobile_no">Mobile No:</label>
-            <input type="text" id="mobile_no" name="mobile_no" class="form-control" value="{{ old('mobile_no', $family->mobile_no) }}" required>
-            @error('mobile_no')
-                <div class="text-danger">{{ $message }}</div>
-            @enderror
-            <div class="invalid-feedback">Please enter a valid mobile number.</div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="state">State:</label>
+                <select id="state" name="state" class="form-control" required>
+                    <option value="">Select State</option>
+                    @foreach ($states as $state)
+                        <option value="{{ $state->id }}" {{ $family->state == $state->id ? 'selected' : '' }}>{{ $state->name }}</option>
+                    @endforeach
+                </select>
+                @error('state')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
+            </div>
+            <div class="form-group col-md-6">
+                <label for="city">City:</label>
+                <select id="city" name="city" class="form-control" required>
+                    <option value="">Select City</option>
+                    @foreach ($cities as $city)
+                        <option value="{{ $city->id }}" {{ $family->city == $city->id ? 'selected' : '' }}>{{ $city->name }}</option>
+                    @endforeach
+                </select>
+                @error('city')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
+            </div>
         </div>
 
-        <div class="form-group">
-            <label for="address">Address:</label>
-            <input type="text" id="address" name="address" class="form-control" value="{{ old('address', $family->address) }}" required>
-            @error('address')
-                <div class="text-danger">{{ $message }}</div>
-            @enderror
-            <div class="invalid-feedback">Please enter an address.</div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="pincode">Pincode:</label>
+                <input type="text" id="pincode" name="pincode" class="form-control" value="{{ old('pincode', $family->pincode) }}" required>
+                @error('pincode')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
+            </div>
+            <div class="form-group col-md-6">
+                <label for="marital_status">Marital Status:</label>
+                <select id="marital_status" name="marital_status" class="form-control" required>
+                    <option value="Unmarried" {{ old('marital_status', $family->marital_status) == 'Unmarried' ? 'selected' : '' }}>Unmarried</option>
+                    <option value="Married" {{ old('marital_status', $family->marital_status) == 'Married' ? 'selected' : '' }}>Married</option>
+                </select>
+                @error('marital_status')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
+            </div>
         </div>
 
-        <div class="form-group">
-            <label for="state">State:</label>
-            <select id="state" name="state" class="form-control" required>
-                <option value="">Select State</option>
-                @foreach ($states as $state)
-                    <option value="{{ $state->id }}" {{ $family->state == $state->id ? 'selected' : '' }}>{{ $state->name }}</option>
-                @endforeach
-            </select>
-            @error('state')
-                <div class="text-danger">{{ $message }}</div>
-            @enderror
-            <div class="invalid-feedback">Please select a state.</div>
+        <div class="form-row" id="wedding_date_div" style="display: {{ old('marital_status', $family->marital_status) == 'Married' ? 'block' : 'none' }}">
+            <div class="form-group col-md-6">
+                <label for="wedding_date">Wedding Date:</label>
+                <input type="date" id="wedding_date" name="wedding_date" class="form-control" value="{{ old('wedding_date', $family->wedding_date) }}">
+                @error('wedding_date')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
+            </div>
         </div>
 
-        <div class="form-group">
-            <label for="city">City:</label>
-            <select id="city" name="city" class="form-control" required>
-                <option value="">Select City</option>
-                @foreach ($cities as $city)
-                    <option value="{{ $city->id }}" {{ $family->city == $city->id ? 'selected' : '' }}>{{ $city->name }}</option>
-                @endforeach
-            </select>
-            @error('city')
-                <div class="text-danger">{{ $message }}</div>
-            @enderror
-            <div class="invalid-feedback">Please select a city.</div>
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <label for="hobbies">Hobbies:</label>
+                <input type="text" id="hobbies" name="hobbies[]" class="form-control" value="{{ old('hobbies', $hobbies ? implode(',', $hobbies) : '') }}">
+                @error('hobbies')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
+            </div>
         </div>
 
-        <div class="form-group">
-            <label for="pincode">Pincode:</label>
-            <input type="text" id="pincode" name="pincode" class="form-control" value="{{ old('pincode', $family->pincode) }}" required>
-            @error('pincode')
-                <div class="text-danger">{{ $message }}</div>
-            @enderror
-            <div class="invalid-feedback">Please enter a valid pincode.</div>
-        </div>
-
-        <div class="form-group">
-            <label for="marital_status">Marital Status:</label>
-            <select id="marital_status" name="marital_status" class="form-control" required>
-                <option value="Unmarried" {{ old('marital_status', $family->marital_status) == 'Unmarried' ? 'selected' : '' }}>Unmarried</option>
-                <option value="Married" {{ old('marital_status', $family->marital_status) == 'Married' ? 'selected' : '' }}>Married</option>
-            </select>
-            @error('marital_status')
-                <div class="text-danger">{{ $message }}</div>
-            @enderror
-            <div class="invalid-feedback">Please select a marital status.</div>
-        </div>
-
-        <div class="form-group" id="wedding_date_div" style="display: {{ old('marital_status', $family->marital_status) == 'Married' ? 'block' : 'none' }}">
-            <label for="wedding_date">Wedding Date:</label>
-            <input type="date" id="wedding_date" name="wedding_date" class="form-control" value="{{ old('wedding_date', $family->wedding_date) }}">
-            @error('wedding_date')
-                <div class="text-danger">{{ $message }}</div>
-            @enderror
-            <div class="invalid-feedback">Please enter a valid wedding date.</div>
-        </div>
-
-        <div class="form-group">
-            <label for="hobbies">Hobbies:</label>
-            <input type="text" id="hobbies" name="hobbies[]" class="form-control" value="{{ old('hobbies', $hobbies ? implode(',', $hobbies) : '') }}">
-            @error('hobbies')
-                <div class="text-danger">{{ $message }}</div>
-            @enderror
-            <div class="invalid-feedback">Please enter hobbies.</div>
-        </div>
-
-        <div class="form-group">
-            <label for="photo">Photo:</label>
-            <input type="file" id="photo" name="photo" class="form-control-file">
-            @if ($family->photo)
-                <img src="{{ Storage::url($family->photo) }}" alt="Photo" width="50">
-            @endif
-            @error('photo')
-                <div class="text-danger">{{ $message }}</div>
-            @enderror
-            <div class="invalid-feedback">Please upload a valid photo.</div>
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <label for="photo">Photo:</label>
+                <input type="file" id="photo" name="photo" class="form-control-file">
+                @if ($family->photo)
+                    <img src="{{ Storage::url($family->photo) }}" alt="Photo" width="50">
+                @endif
+                @error('photo')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
+            </div>
         </div>
 
         <button type="submit" class="btn btn-primary">Update Family Head</button>
