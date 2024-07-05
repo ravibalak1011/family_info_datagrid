@@ -113,7 +113,6 @@
             <div class="invalid-feedback">Please enter a valid wedding date.</div>
         </div>
 
-        
         <div class="form-group">
             <label for="hobbies">Hobbies:</label>
             <input type="text" class="form-control" id="hobbies" name="hobbies[]" placeholder="Enter hobbies" value="{{ old('hobbies.0') }}">
@@ -136,8 +135,19 @@
 @section('scripts')
     <script>
         function addHobby() {
-            var input = '<input type="text" class="form-control mt-2" name="hobbies[]" placeholder="Enter hobbies">';
-            $('#hobbiesContainer').append(input);
+            var inputGroup = `
+                <div class="input-group mt-2">
+                    <input type="text" class="form-control" name="hobbies[]" placeholder="Enter hobbies">
+                    <div class="input-group-append">
+                        <button type="button" class="btn btn-danger" onclick="removeHobby(this)">Remove</button>
+                    </div>
+                </div>
+            `;
+            $('#hobbiesContainer').append(inputGroup);
+        }
+
+        function removeHobby(button) {
+            $(button).closest('.input-group').remove();
         }
 
         $(document).ready(function() {
@@ -176,7 +186,6 @@
                 }
                 form.classList.add('was-validated');
             });
-            
         });
     </script>
 @endsection
