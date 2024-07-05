@@ -11,7 +11,7 @@ class FamilyController extends Controller
 {
     public function index()
     {
-        $families = Family::with(['state', 'city'])->withCount('members')->get();
+        $families = Family::with(['state', 'city'])->withCount('members')->orderBy('id','desc')->get();
         return view('families.index', compact('families'));
     }
 
@@ -70,7 +70,7 @@ class FamilyController extends Controller
 
     public function show(Family $family)
     {
-        $family->load('members');
+        $family->load('members')->orderBy('id','desc');
         return view('families.show', compact('family'));
     }
 
