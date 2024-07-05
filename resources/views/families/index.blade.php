@@ -2,6 +2,13 @@
 
 @section('family_content')
     <h1>Families List</h1>
+
+    @if(session('success'))
+        <div class="alert alert-success" id="success-alert">
+            {{ session('success') }}
+        </div>
+    @endif
+
     <div class="mb-3">
         <a href="{{ route('families.create') }}" class="btn btn-primary">Create Family Head</a>
     </div>

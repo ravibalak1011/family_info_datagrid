@@ -2,6 +2,11 @@
 
 @section('family_content')
     <h1>{{ $family->name }} Family Details</h1>
+        @if(session('success'))
+            <div class="alert alert-success" id="success-alert">
+                {{ session('success') }}
+            </div>
+        @endif
     <div class="mb-3">
         <a href="{{ route('family_members.create', ['family' => $family->id]) }}" class="btn btn-primary">Add Family Member</a>
     </div>
