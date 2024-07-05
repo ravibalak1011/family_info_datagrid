@@ -113,6 +113,7 @@
             <div class="invalid-feedback">Please enter a valid wedding date.</div>
         </div>
 
+        
         <div class="form-group">
             <label for="hobbies">Hobbies:</label>
             <input type="text" class="form-control" id="hobbies" name="hobbies[]" placeholder="Enter hobbies" value="{{ old('hobbies.0') }}">
