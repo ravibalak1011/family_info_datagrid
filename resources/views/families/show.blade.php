@@ -45,7 +45,7 @@
                     </td>
                     <td>
                         <a href="{{ route('family_members.edit', $member->id) }}" class="btn btn-primary btn-sm">Edit</a>
-                        <form action="{{ route('family_members.destroy', $member->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this family member?');">
+                        <form action="{{ route('family_members.destroy', $member->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this family member?');" style="display:inline-block;">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger btn-sm">Delete</button>
