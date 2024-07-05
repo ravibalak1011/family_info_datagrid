@@ -167,6 +167,7 @@
                 }
                 form.classList.add('was-validated');
             });
+            
         });
     </script>
 @endsection

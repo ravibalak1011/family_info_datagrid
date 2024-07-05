@@ -50,6 +50,7 @@
     <a href="{{ route('families.index') }}">Back to Families List</a>
 @endsection
 
+
 @section('scripts')
     <script>
         $(document).ready(function() {

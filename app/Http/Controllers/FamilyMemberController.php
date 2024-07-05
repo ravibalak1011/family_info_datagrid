@@ -43,6 +43,7 @@ class FamilyMemberController extends Controller
 
         return redirect()->route('families.show', ['family' => $request->family_id])->with('success', 'Family member added successfully.');
     }
+    
 
     public function destroy(FamilyMember $family_member)
     {

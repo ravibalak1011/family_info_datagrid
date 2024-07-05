@@ -15,6 +15,7 @@ class FamilyController extends Controller
         return view('families.index', compact('families'));
     }
 
+
     
     public function create()
     {
