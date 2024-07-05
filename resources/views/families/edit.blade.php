@@ -120,7 +120,7 @@
 
         <div class="form-group">
             <label for="photo">Photo:</label>
-            <input type="file" id="photo" name="photo" class="form-control">
+            <input type="file" id="photo" name="photo" class="form-control-file">
             @if ($family->photo)
                 <img src="{{ Storage::url($family->photo) }}" alt="Photo" width="50">
             @endif
