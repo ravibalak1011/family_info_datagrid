@@ -60,6 +60,10 @@
     <script>
         $(document).ready(function() {
             $('#familyMembersTable').DataTable();
+
+            setTimeout(function(){
+                $('#success-alert').fadeOut('slow');
+            }, 5000);
         });
     </script>
 @endsection

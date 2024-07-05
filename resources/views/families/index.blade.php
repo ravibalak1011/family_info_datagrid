@@ -67,6 +67,13 @@
     <script>
         $(document).ready(function() {
             $('#familiesTable').DataTable();
+
+            setTimeout(function(){
+                $('#success-alert').fadeOut('slow');
+            }, 5000);
+            
         });
+
+        
     </script>
 @endsection
